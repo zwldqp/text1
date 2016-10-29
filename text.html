@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        ul,ol{
+            list-style:none;
+        }
+        #container{
+            width: 400px;
+            height: 200px;
+            margin: 50px auto;
+        }
+        #menu{
+            list-style: none;
+            height: 30px;
+        }
+        #menu li{
+            float: left;
+            height: 30px;
+            width: 120px;
+            background: #ccc;
+            margin-right: 5px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+        #menu  .selected{
+            background: #000;
+            color: #fff;
+        }
+        #content{
+            height: 400px;
+            height: 170px;
+            border-top: 1px solid #000;
+            background: #ccc;
+        }
+        #content .selected{
+            display: block;
+        }
+        #content div{
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul id="menu">
+        <li class="selected">hiahi</li>
+        <li >nklfa</li>
+        <li >uipjo</li>
+    </ul>
+    <div id="content">
+        <div class="selected">111</div>
+        <div>222</div>
+        <div>333</div>
+    </div>
+</div>
+<script>
+    var oTab = document.getElementById('menu');
+    var ali = oTab.getElementsByTagName('li');
+
+    var oContent = document.getElementById('content');
+    var aDiv = oContent.getElementsByTagName('div');
+    for(var i = 0;i<ali.length;i++){
+        ali[i].index = i;
+        ali[i].onclick = function(){
+            for(var i=0;i<ali.length; i++){
+                ali[i].className = '';
+            }
+            this.className = 'selected';
+            for(var i=0;i<aDiv.length;i++){
+                aDiv[i].className='';
+            }
+            aDiv[this.index].className='selected';
+//			oContent.innerHTML=arr[this.index];
+        };
+        ali[i].onselectstart=function(){
+            return false;
+        }
+    }
+
+</script>
+</body>
+</html>
