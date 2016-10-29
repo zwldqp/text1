@@ -74,63 +74,6 @@
            <span>&gt;</span>
        </div>
    </div>
-   <script>
-       var oContainer = document.getElementById('container');
-       var oTab = document.getElementById('tab');
-       var aLi = oTab.getElementsByTagName('li');
-       var oImgs = document.getElementById('imgs');
-       var aImg = oImgs.getElementsByTagName('img');
-       var index = 0;
-       for(var i = 0;i < aLi.length;i++){
-           aLi[i].index = i;
-           aLi[i].onmouseover = function(){
-               changeimg(this.index);
-           };
-       }
-
-
-       function changeimg (index) {
-           for(var i=0;i<aLi.length;i++){
-               aLi[i].className="";
-               aImg[i].className='';
-           }
-           // elem.className="selected";
-           aLi[index].className = 'selected';
-           aImg[index].className="selected";
-
-       }
-       var oPrev = document.getElementById('prev');
-
-       var oNext = document.getElementById('next');
-       oPrev.onclick= function(){
-           index--;
-           if(index == -1){
-               index=aLi.length-1;
-           }
-           changeimg(index);
-       }
-       oNext.onclick = function(){
-           index++;
-           if(index == aLi.length){
-               index=0;
-           }
-           changeimg(index);
-
-       }
-       var timer;
-       function play () {
-           timer = setInterval(function () {
-               oNext.onclick();
-           },2000);
-       }
-       play();
-       oContainer.onmouseover = function  () {
-           clearInterval(timer);
-       };
-       oContainer.onmouseout = function  () {
-           play();
-       };
-
-   </script>
+   
 </body>
 </html>
