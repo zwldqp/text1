@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,ol{
+            list-style:none;
+        }
+        a{
+            text-underline: none;
+        }
+        #container{
+            width: 680px;
+            height: 344px;
+            margin: 50px auto;
+            position: relative;
+        }
+        #nav li,#arrows span{
+            float: left;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            background: #000000;
+            color: #fff;
+            text-align: center;
+            line-height: 20px;
+        }
+        #img a{
+            display: none;
+        }
+        #img a.selected{
+            display: block;
+            /*position：relative  left：500px*/
+            /*相对定位 相对初始位 空间置不释放*/
+            /*position：absolute left：500px*/
+            /*绝对定位 如果祖先元素无定位，相对body 空间释放 如果祖先元素有定位，相对最近的祖先元素定位  空间释放*/
+        }
+        #nav li.selected{
+            background: orange;
+        }
+        #nav{
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+        }
+        #arrows{
+            position: absolute;
+            left: 20px;
+            bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+   <div id="container">
+       <ul id="nav">
+           <li class="selected">1</li>
+           <li>2</li>
+           <li>3</li>
+           <li>4</li>
+       </ul>
+       <div id="img">
+           <a href="" class="selected"><img src="img/1.png" alt=""/></a>
+            <a href=""><img src="img/1.png" alt=""/></a>
+            <a href=""><img src="img/1.png"  alt=""/></a>
+            <a href=""><img src="img/1.png" alt=""/></a>
+       </div>
+       <div id="arrows">
+           <span>&lt;</span>
+           <span>&gt;</span>
+       </div>
+   </div>
+</body>
+</html>
