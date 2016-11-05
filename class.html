@@ -30,10 +30,10 @@
             text-align: center;
             line-height: 20px;
         }
-        #img a{
+        #img img{
             display: none;
         }
-        #img a.selected{
+        #img .selected{
             display: block;
             /*position：relative  left：500px*/
             /*相对定位 相对初始位 空间置不释放*/
@@ -52,6 +52,7 @@
             position: absolute;
             left: 20px;
             bottom: 10px;
+
         }
     </style>
 </head>
@@ -64,16 +65,69 @@
            <li>4</li>
        </ul>
        <div id="img">
-           <a href="" class="selected"><img src="img/1.png" alt=""/></a>
-            <a href=""><img src="img/1.png" alt=""/></a>
-            <a href=""><img src="img/1.png"  alt=""/></a>
-            <a href=""><img src="img/1.png" alt=""/></a>
+           <a href=""><img src="img/1.jpg" class="selected" alt=""/></a>
+            <a href=""><img src="img/2.jpg" alt=""/></a>
+            <a href=""><img src="img/3.jpg"  alt=""/></a>
+            <a href=""><img src="img/4.jpg" alt=""/></a>
        </div>
        <div id="arrows">
-           <span>&lt;</span>
-           <span>&gt;</span>
+           <span id="prev">&lt;</span>
+           <span id="next">&gt;</span>
        </div>
    </div>
-   
+   <script>
+       var oContainer=document.getElementById('container');
+       var oTab = document.getElementById('nav');
+       var aLi = oTab.getElementsByTagName('li');
+        var oContent = document.getElementById('img');
+        var aImg = oContent.getElementsByTagName('img');
+        var oPrev = document.getElementById('prev');
+        var oNext = document.getElementById('next');
+        var iNow=0;
+       for(var i=0;i<aLi.length;i++) {
+           aLi[i].index=i;
+           aLi[i].onmouseover = function () {
+               iNow=this.index;
+               changeImg(this.index);
+           };
+       };
+        oPrev.onclick = function(){
+            iNow--;
+//            if(iNow==ali.length)
+//            iNow=0;
+            iNow=(iNow+aLi.length)%aLi.length;
+            changeImg(iNow);
+        };
+        oNext.onclick = function(){
+            iNow++;
+//            if(iNow==ali.length)
+//            iNow=0;
+            iNow=iNow%aLi.length;
+            changeImg(iNow);
+        };
+       function changeImg(elem){
+           for (var i = 0; i < aLi.length; i++) {
+               aLi[i].className = '';
+               aImg[i].className = '';
+           }
+           aLi[elem].className = 'selected';
+           aImg[elem].className = 'selected';
+       }
+//       时间控制器 setInterval(函数（隔一段时间需要执行的事件），时间（2000毫秒）)；
+       var timer;
+       function run(){
+               timer=setInterval(function(){
+               oNext.onclick();
+           },2000);
+       }
+       run();
+       oContainer.onmouseover=function(){
+           clearInterval(timer);
+       }
+       oContainer.onmouseout=function(){
+//          不能在函数里直接写var timer开计时器，局部的定时器一直开着，越开越多，只能关全局的，会出错  可以不写var，就不会覆盖全局的了
+           run();
+       }
+   </script>
 </body>
 </html>
