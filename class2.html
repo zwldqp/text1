@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="a">a
+    <div id="b">b</div>
+</div>
+<script>
+//    js中没有块级作用域 for（var i =0；；i++）中的i在for外面也可以用
+//    局部变量如果没用var  则默认为全局变量
+//var a = 5;
+//function aa(){
+//    console.log(a);  输出的为undefine    变量到处都有定义  局部前面自动声明 var a；但是没有赋值
+//    var a = 4;
+//}
+//function aa(){
+//    console.log(a);  输出的为undefine    变量到处都有定义  局部前面自动声明 var a；但是没有赋值
+//     var a = b =5
+//}
+//console.log(b);  5  因为没有var
+//console.log(a);  报错  not definded
+    var a = document.getElementById('a');
+    var b = document.getElementById('b');
+</script>
+</body>
+</html>
